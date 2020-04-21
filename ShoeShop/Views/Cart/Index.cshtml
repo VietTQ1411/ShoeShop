@@ -1,0 +1,158 @@
+﻿@model List<ShoeShop.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double total = 0;
+    
+    var coupon = (ShopDao.EF.Coupon)Session["CouponSession"];
+   
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="bread"><span><a href="index.html">Home</a></span> / <span>Shopping Cart</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row row-pb-lg">
+            <div class="col-md-10 offset-md-1">
+                <div class="process-wrap">
+                    <div class="process text-center active">
+                        <p><span>01</span></p>
+                        <h3>Shopping Cart</h3>
+                    </div>
+                    <div class="process text-center">
+                        <p><span>02</span></p>
+                        <h3>Checkout</h3>
+                    </div>
+                    <div class="process text-center">
+                        <p><span>03</span></p>
+                        <h3>Order Complete</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-pb-lg">
+            <div class="col-md-12">
+                <div class="product-name d-flex">
+                    <div class="one-forth text-left px-4">
+                        <span>Product Details</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Price</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Quantity</span>
+                    </div>
+                    <div class="one-eight text-center">
+                        <span>Total</span>
+                    </div>
+                    <div class="one-eight text-center px-4">
+                        <span>Remove</span>
+                    </div>
+                </div>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="product-cart d-flex">
+                            <div class="one-forth">
+                                <div class="product-img" style="background-image: url(/images/@item.Product.Image);">
+                                </div>
+                                <div class="display-tc">
+                                    <h3>@item.Product.Name</h3>
+                                </div>
+                            </div>
+                            <div class="one-eight text-center">
+                                <div class="display-tc">
+                                    <span class="price"> @(item.Product.PromotionPrice == null ? "$" + item.Product.Price : "$" + (double)(item.Product.Price - (item.Product.Price * item.Product.PromotionPrice / 100)))</span>
+                                </div>
+                            </div>
+                            <div class="one-eight text-center">
+                                <div class="display-tc display-quantity">
+                                    <i class="fa fa-minus" data-id="@item.Product.ID"></i>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="@item.Quantity" min="0" max="@item.Product.Quantity">
+                                    <i class="fa fa-plus" data-id="@item.Product.ID"></i>
+                                </div>
+                            </div>
+                            <div class="one-eight text-center">
+                                <div class="display-tc">
+                                    @{total += (item.Product.PromotionPrice == null ? (double)(item.Product.Price * item.Quantity) : ((double)((item.Product.Price - (item.Product.Price * item.Product.PromotionPrice / 100))) * item.Quantity));}
+                                    <span class="price">$@(item.Product.PromotionPrice == null ? item.Product.Price * item.Quantity : ((item.Product.Price - (item.Product.Price * item.Product.PromotionPrice / 100)))*item.Quantity)</span>
+                                </div>
+                            </div>
+                            <div class="one-eight text-center">
+                                <div class="display-tc">
+                                    <a href="#" data-id="@item.Product.ID" class="delete"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="pay">
+                        <div class="text-right">
+                            <a href="/check-out" class="btn btn-primary btn-lg">Purchase</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h2>Bạn chưa có sản phẩm nào </h2>
+                }
+
+
+            </div>
+        </div>
+        <div class="row row-pb-lg">
+            <div class="col-md-12">
+                <div class="total-wrap">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <form>
+                                <div class="row form-group">
+                                    <div class="col-sm-9">
+                                        <input type="text" name="quantity" id="coupon_code" class="form-control input-number" placeholder="Your Coupon Number...">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="submit" value="Apply Coupon" class="btn btn-primary" id="btn_coupon">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <div class="total">
+                                <div class="sub">
+                                    <input value="@total" id="subtotal" class="hidden" style="display:none;" />
+                                    @{  var discount = (coupon == null ? 0 :  coupon.Value * total / 100);}
+                                    <p><span>Subtotal:</span> <span>$@total</span></p>
+                                    <p><span>Delivery:</span> <span id="delivery">Free Ship</span></p>
+                                    <p><span>Discount:</span> <span id="discount">@("$" + discount + (coupon!=null?" ( "+coupon.Value+"% )":""))</span></p>
+                                </div>
+                                <div class="grand-total">
+                                    <p><span><strong>Total:</strong></span> <span id="total">$@(total - discount)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
+@section jsFooter{
+    <script>
+        $("document").ready(function(){
+            document.getElementById("total").innerHTML = @(total - discount).toFixed(2);
+        });
+    </script>
+    <script src="~/Scripts/JS/Cart.js"></script>
+}
+

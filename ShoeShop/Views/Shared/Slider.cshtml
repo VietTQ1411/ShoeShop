@@ -1,0 +1,29 @@
+﻿@model List<ShopDao.EF.Slide>
+
+<!--Slide on the web-->
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            @foreach (var item in Model)
+            {
+                <!--Images-->
+                <li style="background-image: url(/images/@item.Images);">
+                    <div class="overlay"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <div class="desc">
+                                        <!--Description-->
+                                        @Html.Raw(item.Description)
+                                        <p><a href="@item.Link" class="btn btn-primary">Shop Collection</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</aside>

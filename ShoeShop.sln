@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoeShop", "ShoeShop\ShoeShop.csproj", "{92A7AA50-124A-4C9B-8472-BF22EAE7D2CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDao", "ShopDao\ShopDao.csproj", "{5E1BD25F-AD24-46AA-9A42-C5016746D611}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92A7AA50-124A-4C9B-8472-BF22EAE7D2CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92A7AA50-124A-4C9B-8472-BF22EAE7D2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92A7AA50-124A-4C9B-8472-BF22EAE7D2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92A7AA50-124A-4C9B-8472-BF22EAE7D2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1BD25F-AD24-46AA-9A42-C5016746D611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1BD25F-AD24-46AA-9A42-C5016746D611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1BD25F-AD24-46AA-9A42-C5016746D611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1BD25F-AD24-46AA-9A42-C5016746D611}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {556C9083-5932-481B-9894-70FD7A92DA33}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,126 @@
+﻿@model ShopDao.EF.User
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container bg-gradient-primary">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                @using (Html.BeginForm("Create", "Login", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" });
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.UserName, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.UserName, new
+                                        {
+                                           @class = "form-control",
+                                           @placeholder = "Enter Your UserName",
+                                           @autofocus = "autoforcus"
+                                        })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
+                                        @Html.PasswordFor(Model => Model.Password, new
+                                        {
+                                            @class = "form-control",
+                                            @placeholder = "Password",
+                                            @autofocus = "autoforcus"
+                                        })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" id="rePass" class="form-control" name="rePass" placeholder="Re Password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.Name, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(Model => Model.Name, new
+                                        {
+                                            @class = "form-control",
+                                            @placeholder = "Enter Your Name",
+                                        })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.Address, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(Model => Model.Address, new
+                                        {
+                                            @class = "form-control",
+                                            @placeholder = "Enter Your Address",
+                                        })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(Model => Model.Email, new
+                                        {
+                                            @class = "form-control",
+                                            @placeholder = "Enter Your Email/Gmail",
+                                            @type = "email"
+                                        })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(Model => Model.Phone, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(Model => Model.Phone, new
+                                        {
+                                            @class = "form-control",
+                                            @placeholder = "Enter Your Number",
+                                            @type = "number"
+                                        })
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Create
+                                    </button>
+                                }<hr>
+                                <div class="text-center">
+                                    <a class="" href="/login">Sign In!</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="" href="register.html">Forgot Password?</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript-->
+
+<script src="~/Scripts/Client/js/jquery.min.js"></script>
+<script src="~/Scripts/Client/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Core plugin JavaScript-->
+
+<script src="~/Scripts/Client/js/jquery.easing.js"></script>
+<!-- Custom scripts for all pages-->
+
+<script src="~/Scripts/Client/js/sb-admin-2.min.js"></script>
+

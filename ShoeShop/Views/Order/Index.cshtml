@@ -1,0 +1,177 @@
+﻿@model ShopDao.EF.OrderDetail
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double total = 0;
+    var user = (ShopDao.EF.User)Session["User"];
+    var cart = (List<ShoeShop.Models.CartItem>)Session["CartSection"];
+    var coupon = (ShopDao.EF.Coupon)Session["CouponSession"];
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="bread"><span><a href="index.html">Home</a></span> / <span>Checkout</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="colorlib-product">
+    <div class="container order">
+        <div class="row row-pb-lg">
+            <div class="col-sm-10 offset-md-1">
+                <div class="process-wrap">
+                    <div class="process text-center active">
+                        <p><span>01</span></p>
+                        <h3>Shopping Cart</h3>
+                    </div>
+                    <div class="process text-center active">
+                        <p><span>02</span></p>
+                        <h3>Checkout</h3>
+                    </div>
+                    <div class="process text-center">
+                        <p><span>03</span></p>
+                        <h3>Order Complete</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+
+                @using (Html.BeginForm("Order", "Order", FormMethod.Post, new { id = "detail" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" });
+                    <h2>Billing Details - MK30321</h2>
+                    <div class="row colorlib-form">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fname">Name</label>
+                                @Html.ValidationMessageFor(Model => Model.ShipName, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(Model => Model.ShipName, new
+                           {
+                               @class = "form-control",
+                               @placeholder = "Your Name",
+                               @Value = user.Name
+                           })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="lname">Your Phone</label>
+                                @Html.ValidationMessageFor(Model => Model.ShipMobile, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(Model => Model.ShipMobile, new
+                           {
+                               @class = "form-control",
+                               @placeholder = "Your Phone",
+                               @Value = user.Phone
+                           })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="companyname">Email</label>
+                                @Html.ValidationMessageFor(Model => Model.ShipEmail, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(Model => Model.ShipEmail, new
+                           {
+                               @class = "form-control",
+                               @placeholder = "Your Email",
+                               @Value = user.Email
+                           })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fname">Address</label>
+                                @Html.ValidationMessageFor(Model => Model.ShipAddress, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(Model => Model.ShipAddress, new
+                           {
+                               @class = "form-control",
+                               @placeholder = "Your Address",
+                               @Value = user.Address
+                           })
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="address2" class="form-control" name="address2" placeholder="Second Address">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class=" custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="shiptosecond" name="shiptosecond">
+                                    <label class="custom-control-label" for="shiptosecond"> Ship to Second address</label>
+                                </div>
+                            </div> <p>Your information will be change with new input</p>
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cart-detail">
+                            <h2>Cart Total</h2>
+                            <ul>
+
+                                @foreach (var item in cart)
+                                {
+                                    { total += (item.Product.PromotionPrice == null ? (double)(item.Product.Price * item.Quantity) : ((double)((item.Product.Price - (item.Product.Price * item.Product.PromotionPrice / 100))) * item.Quantity)); }
+                                    <li><p><span>@item.Product.Name</span> <span>$@(item.Product.PromotionPrice == null ? item.Product.Price * item.Quantity : ((item.Product.Price - (item.Product.Price * item.Product.PromotionPrice / 100))) * item.Quantity)</span></p></li>
+                                }
+                                @{ var discount = (coupon == null ? 0 : coupon.Value * total / 100);}
+                                <li><span>Subtotal</span><span>@("$" + discount + (coupon != null ? " ( " + coupon.Value + "% )" : ""))</span></li>
+                                <li><span>Shipping</span> <span>Free Ship</span></li>
+                                <li><span>Order Total</span> <span>$@(total - discount) </span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col-md-12">
+                        <div class="cart-detail">
+                            <h2>Payment Method</h2>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class=" custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" id="customCheck" name="check" checked readonly>
+                                        <label class="custom-control-label" for="customCheck">Pay on delivery</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class=" custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" id="Radio" name="radio" checked readonly>
+                                        <label class="custom-control-label" for="Radio"> I have read and accept the terms and conditions</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p><a href="#" onclick="myFunction()" class="btn btn-primary">Place an order</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section jsFooter{
+    <script>
+        function myFunction() {
+            document.getElementById("detail").submit();
+        }
+    </script>
+}
