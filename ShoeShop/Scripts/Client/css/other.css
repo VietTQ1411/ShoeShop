@@ -10,30 +10,61 @@
     align-items: center;
 }
 
-    .product-cart .display-quantity i {
-        padding: 12.5px 13px 10px 13px;
-        border-top: 1px solid #7a7171;
-        border-left: 1px solid #7a7171;
-        border-bottom: 1px solid #7a7171;
-        border-radius: 50%;
-        margin-bottom: -5px;
-        cursor: pointer;
+.product-cart .one-there,
+.product-name .one-there {
+    height: initial !important;
+    width: calc(100% - 650px);
+    display: table;
+    float: left;
+    
+}
+
+    .product-cart .one-there span,
+    .product-name .one-there span {
+        color: #000;
+        font-weight: 400;
+        text-transform: uppercase;padding-left: 2.5rem !important;
+    }
+       
+.order-view h5 {
+    font-weight: 500;
+    font-family: "Rokkitt", Georgia, serif;
+    font-size: 1.25rem;
+    color: #48897db8 !important;
+}
+.product-cart:hover {
+    cursor: pointer;
+}
+
+.order-view:hover {
+    color: #05c09d;
+    cursor: pointer;
+}
+
+.product-cart .display-quantity i {
+    padding: 12.5px 13px 10px 13px;
+    border-top: 1px solid #7a7171;
+    border-left: 1px solid #7a7171;
+    border-bottom: 1px solid #7a7171;
+    border-radius: 50%;
+    margin-bottom: -5px;
+    cursor: pointer;
+}
+
+    .product-cart .display-quantity i:hover {
+        color: #e0d3d3;
+        background-color: #75787a;
+        -webkit-transition-duration: .5s;
+        transition-duration: .5s;
     }
 
-        .product-cart .display-quantity i:hover {
-            color: #e0d3d3;
-            background-color: #75787a;
-            -webkit-transition-duration: .5s;
-            transition-duration: .5s;
-        }
-
-    .product-cart .display-quantity input {
-        border-radius: 20%;
-        border-top: 1px solid #b1a6a6 !important;
-        border-left: none !important;
-        border-bottom: 1px solid #c7bbbb !important;
-        border-right: none !important;
-    }
+.product-cart .display-quantity input {
+    border-radius: 20%;
+    border-top: 1px solid #b1a6a6 !important;
+    border-left: none !important;
+    border-bottom: 1px solid #c7bbbb !important;
+    border-right: none !important;
+}
 
 .product-cart .display-tc .delete i {
     font-size: 24px;

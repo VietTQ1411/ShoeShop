@@ -1700,6 +1700,7 @@
     <Content Include="Scripts\admin\vendor\jquery\jquery.min.js" />
     <Content Include="Scripts\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Scripts\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Scripts\Client\userCss\style.css" />
     <Content Include="Scripts\Content\bootstrap-theme.css" />
     <Content Include="Scripts\Content\bootstrap-theme.min.css" />
     <Content Include="Scripts\Content\bootstrap.css" />
@@ -3016,6 +3017,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3056,6 +3058,11 @@
     <Content Include="Views\Order\Success.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\CreateSuccess.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\MyOrder.cshtml" />
+    <Content Include="Views\Users\LoginSecurity.cshtml" />
+    <Content Include="Views\Users\YourAddress.cshtml" />
+    <Content Include="Views\Users\Success.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

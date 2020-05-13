@@ -33,12 +33,14 @@
     <link rel="stylesheet" href="/Scripts/Client/fonts/flaticon/font/flaticon.css">
 
     <!-- Theme style  -->
+    <link href="~/Scripts/Client/userCss/style.css" rel="stylesheet" />
     <link href="~/Scripts/Client/css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="~/Scripts/Client/css/google.css" rel="stylesheet" />
     <link href="~/Scripts/Client/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/Scripts/Client/css/product.css">
+    <link href="~/Scripts/Client/css/product.css" rel="stylesheet">
     <link href="~/Scripts/Client/css/other.css" rel="stylesheet" />
 
+    
 </head>
 
 <body>
@@ -74,7 +76,7 @@
                                     <li class="has-dropdown cart">
                                         <a href="#"><i class="fa fa-user"></i> @(((ShopDao.EF.User)Session["User"]).Name)</a> 
                                         <ul class="dropdown">
-                                            <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                                            <li><a href="/profile"><i class="fa fa-user"></i>  Profile</a></li>
                                             <li><a href="/log-out"><i class="fa fa-sign-out"></i> Log Out</a></li>
                                         </ul>
                                     </li>

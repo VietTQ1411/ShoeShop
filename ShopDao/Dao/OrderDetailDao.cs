@@ -18,5 +18,14 @@ namespace ShopDao.Dao
                 return order.ID;
             }
         }
+
+        public List<OrderDetail> GetOrderDetails(int id)
+        {
+            using (ShoeDao db = new ShoeDao())
+            {
+                return db.OrderDetails.Where(x => x.CustomerID == id).OrderByDescending(x => x.CreateDate)
+                                            .ToList();
+            }
+        }
     }
 }

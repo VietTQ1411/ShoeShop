@@ -9,3 +9,14 @@ E:\C#\ShoeShop\ShopDao\obj\Debug\ShopDao.csprojAssemblyReference.cache
 E:\C#\ShoeShop\ShopDao\obj\Debug\ShopDao.csproj.CopyComplete
 E:\C#\ShoeShop\ShopDao\obj\Debug\ShopDao.dll
 E:\C#\ShoeShop\ShopDao\obj\Debug\ShopDao.pdb
+E:\Github\ShoeShop\ShopDao\bin\Debug\ShopDao.dll.config
+E:\Github\ShoeShop\ShopDao\bin\Debug\ShopDao.dll
+E:\Github\ShoeShop\ShopDao\bin\Debug\ShopDao.pdb
+E:\Github\ShoeShop\ShopDao\bin\Debug\EntityFramework.dll
+E:\Github\ShoeShop\ShopDao\bin\Debug\EntityFramework.SqlServer.dll
+E:\Github\ShoeShop\ShopDao\bin\Debug\EntityFramework.xml
+E:\Github\ShoeShop\ShopDao\bin\Debug\EntityFramework.SqlServer.xml
+E:\Github\ShoeShop\ShopDao\obj\Debug\ShopDao.csprojAssemblyReference.cache
+E:\Github\ShoeShop\ShopDao\obj\Debug\ShopDao.csproj.CopyComplete
+E:\Github\ShoeShop\ShopDao\obj\Debug\ShopDao.dll
+E:\Github\ShoeShop\ShopDao\obj\Debug\ShopDao.pdb

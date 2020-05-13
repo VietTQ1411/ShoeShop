@@ -1,0 +1,42 @@
+﻿@model ShopDao.Dao.UserDao
+
+@{
+    ViewBag.Title = "LoginSecurity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="bread"><span><a href="/home">Home</a></span> / 
+                <span><a href="/profile">My Profile</a></span> /<span>Login and Security</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-product">
+    <div class="container order">
+        @using (Html.BeginForm("LoginSecurity", "Users", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger col-6" });
+            <div class="form-horizontal">
+                <div class="form-group col-6">
+                    <input type="password" id="address2" class="form-control" name="oldpass" placeholder="Old Password">
+                </div>
+                <div class="form-group col-6">
+                    <input type="password" id="address2" class="form-control" name="newpass" placeholder="New Password">
+                </div>
+                <div class="form-group col-6">
+                    <input type="password" id="address2" class="form-control" name="repass" placeholder="Re Password">
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Change" class="btn btn-dark" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

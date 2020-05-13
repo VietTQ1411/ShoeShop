@@ -22,6 +22,37 @@ namespace ShoeShop
                 new[] { "ShoeShop.Areas.Admin.Controllers" }
             );
 
+            //MyOrder
+            routes.MapRoute(
+                name: "my-order",
+                url: "my-order",
+                defaults: new { controller = "Users", action = "MyOrder", id = UrlParameter.Optional },
+                new[] { "ShoeShop.Controllers" }
+            );
+
+            //LoginSecurity
+            routes.MapRoute(
+                name: "LoginSecurity",
+                url: "login-security",
+                defaults: new { controller = "Users", action = "LoginSecurity", id = UrlParameter.Optional },
+                new[] { "ShoeShop.Controllers" }
+            ); 
+            
+            //YourAddress
+            routes.MapRoute(
+                name: "YourAddress",
+                url: "your-addresses",
+                defaults: new { controller = "Users", action = "YourAddress", id = UrlParameter.Optional },
+                new[] { "ShoeShop.Controllers" }
+            );
+            //profile
+            routes.MapRoute(
+                name: "profile",
+                url: "profile",
+                defaults: new { controller = "Users", action = "Index", id = UrlParameter.Optional },
+                new[] { "ShoeShop.Controllers" }
+            );
+
             //Đăng xuất
             routes.MapRoute(
                 name: "log out",

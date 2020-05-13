@@ -25,7 +25,7 @@
                         }
 
                         $('#model_description').html(res.description);
-                        $("#model_add_to_cart").attr('href', 'them-gio-hang?productID=' + res.id + '&quantity=1');
+                        $("#model_add_to_cart").attr('href', 'them-gio-hang?ID=' + res.id + '&quantity=1');
                     } else {
                         console.log("null")
                     }

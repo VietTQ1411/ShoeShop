@@ -20,7 +20,6 @@ namespace ShoeShop.Controllers
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-
             var ses = (ShopDao.EF.User)Session[Constrain.User_Session];
             if (ses == null)
             {

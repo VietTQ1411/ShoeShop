@@ -61,6 +61,7 @@ namespace ShopDao.Dao
                     user.Email = entity.Email;
                     user.ModifiedBy = entity.ModifiedBy;
                     user.ModifiedDate = DateTime.Now;
+                    user.Password = entity.Password;
 
                     db.SaveChanges();
                     return true;

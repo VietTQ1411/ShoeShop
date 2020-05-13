@@ -34,18 +34,18 @@ namespace ShoeShop.Controllers
         /// <param name="productID"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        public ActionResult AddCart(int productID, int quantity)
+        public ActionResult AddCart(int ID, int quantity)
         {
-            var Product = new ProductDao().getOneById(productID);
+            var Product = new ProductDao().getOneById(ID);
             var cart = Session[Constrain.Cart_Session];
             if (cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if (list.Exists(x => x.Product.ID == productID))
+                if (list.Exists(x => x.Product.ID == ID))
                 {
                     foreach (CartItem i in list)
                     {
-                        if (i.Product.ID == productID)
+                        if (i.Product.ID == ID)
                         {
                             int total = i.Quantity + quantity;
                             if (total < Product.Quantity)
